@@ -97,9 +97,39 @@ nav ul{flex-wrap:wrap;gap:4px 16px;font-size:.92rem}
 .offer .meta .dot{display:none}
 }
 .book{margin:28px 0 0}
+.rgroups{margin-top:32px;max-width:900px}
+.rg{margin-bottom:34px}
+.rg h3{font-size:1.3rem;color:var(--head);display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.rg h3 small{font-family:Nunito,system-ui,sans-serif;font-size:.85rem;color:var(--muted);font-weight:400}
+ul.rcards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.rc{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px}
+.rc .ic{width:30px;height:30px;color:var(--c)}
+.rc b{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:1.05rem;color:var(--ink);line-height:1.2}
+.rc span{color:var(--muted);font-size:.9rem;line-height:1.4}
+@media (max-width:480px){ul.rcards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.hint{color:var(--muted);font-size:.95rem;margin:22px 0 0}
+.cats{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+.cat{font:600 .95rem Nunito,system-ui,sans-serif;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-align:left}
+.cat::before{content:"";flex:none;width:12px;height:12px;border-radius:50%;background:var(--c)}
+.cat[aria-pressed="true"]{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
+.panel{margin-top:22px}
+.panel[hidden]{display:none}
+.panel .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;max-width:900px}
+.fc{position:relative;min-height:170px;padding:0;border:1px solid var(--line);background:var(--surface);border-radius:18px;cursor:pointer;font:inherit;color:inherit;overflow:hidden}
+.fc .front,.fc .back{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px;text-align:center;transition:opacity .35s ease,transform .35s ease}
+.fc .front svg{width:78px;height:78px;color:var(--c)}
+.fc .tap{font-size:.78rem;color:var(--muted)}
+.fc .back{opacity:0;transform:scale(.96)}
+.fc.open .front{opacity:0;transform:scale(1.06)}
+.fc.open .back{opacity:1;transform:none}
+.fc .back b{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:1.05rem;color:var(--ink);line-height:1.2}
+.fc .back span{font-size:.88rem;color:var(--muted);line-height:1.4}
+@media (max-width:480px){.panel .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+@media (prefers-reduced-motion:reduce){.fc .front,.fc .back{transition:none}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="fl" viewBox="-20 -20 40 40"><g fill="currentColor"><ellipse cx="0" cy="-9" rx="6.5" ry="9"/><ellipse cx="0" cy="-9" rx="6.5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-9" rx="6.5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-9" rx="6.5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-9" rx="6.5" ry="9" transform="rotate(288)"/></g><circle r="4" fill="#FFF8E1"/></symbol><symbol id="mp" viewBox="-24 -24 48 48"><path d="M0-22L4-14L9-17L8-8L16-10L13-3L19 0L10 5L12 11L3 9L1 19L-1 19L-3 9L-12 11L-10 5L-19 0L-13-3L-16-10L-8-8L-9-17L-4-14Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M0 19V-12M0 9L-11-3M0 9L11-3M0 14L-8 8M0 14L8 8" stroke="#fff" stroke-opacity=".45" stroke-width="1.1" fill="none" stroke-linecap="round"/><path d="M0 19V23" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="dr" viewBox="-20 -20 40 40"><path d="M0-16C8-6 13-1 13 6A13 13 0 0 1-13 6C-13-1-8-6 0-16Z" fill="currentColor"/></symbol></svg>
 <div class="bot tl" aria-hidden="true"></div><div class="bot tr" aria-hidden="true"></div><div class="bot bl" aria-hidden="true"></div><div class="bot br" aria-hidden="true"></div>
 <div class="wrap">
   <nav>
@@ -158,60 +188,70 @@ nav ul{flex-wrap:wrap;gap:4px 16px;font-size:.92rem}
   <section id="remedies">
     <h2>The 38 remedies</h2>
     <p class="intro">Dr Bach grouped his 38 remedies into seven emotional themes. Each one is linked to a state of mind, such as fear, doubt, loneliness or overwhelm. This is here for curiosity, not for self-diagnosis. In a consultation, we choose together what fits you.</p>
-    <div class="groups">
-      <details class="grp"><summary>Fear<span>5 remedies</span></summary><ul class="rem">
-        <li><b>Rock Rose</b><span>terror, panic</span></li>
-        <li><b>Mimulus</b><span>fear of known things</span></li>
-        <li><b>Cherry Plum</b><span>fear of losing control</span></li>
-        <li><b>Aspen</b><span>vague, unexplained fear</span></li>
-        <li><b>Red Chestnut</b><span>worry for loved ones</span></li>
-      </ul></details>
-      <details class="grp"><summary>Uncertainty<span>6 remedies</span></summary><ul class="rem">
-        <li><b>Cerato</b><span>doubting your own judgement</span></li>
-        <li><b>Scleranthus</b><span>indecision, swinging between choices</span></li>
-        <li><b>Gentian</b><span>discouragement after a setback</span></li>
-        <li><b>Gorse</b><span>hopelessness, feeling it’s no use</span></li>
-        <li><b>Hornbeam</b><span>“Monday morning” weariness</span></li>
-        <li><b>Wild Oat</b><span>unsure of your direction in life</span></li>
-      </ul></details>
-      <details class="grp"><summary>Not enough interest in the present<span>7 remedies</span></summary><ul class="rem">
-        <li><b>Clematis</b><span>drifting, daydreaming</span></li>
-        <li><b>Honeysuckle</b><span>living in the past</span></li>
-        <li><b>Wild Rose</b><span>resignation, apathy</span></li>
-        <li><b>Olive</b><span>complete exhaustion</span></li>
-        <li><b>White Chestnut</b><span>unwanted, repeating thoughts</span></li>
-        <li><b>Mustard</b><span>deep gloom with no clear cause</span></li>
-        <li><b>Chestnut Bud</b><span>repeating the same mistakes</span></li>
-      </ul></details>
-      <details class="grp"><summary>Loneliness<span>3 remedies</span></summary><ul class="rem">
-        <li><b>Water Violet</b><span>reserved, aloof</span></li>
-        <li><b>Impatiens</b><span>impatience, irritability</span></li>
-        <li><b>Heather</b><span>wrapped up in your own troubles</span></li>
-      </ul></details>
-      <details class="grp"><summary>Over-sensitivity to influences<span>4 remedies</span></summary><ul class="rem">
-        <li><b>Agrimony</b><span>hiding worries behind a cheerful face</span></li>
-        <li><b>Centaury</b><span>finding it hard to say no</span></li>
-        <li><b>Walnut</b><span>support through change</span></li>
-        <li><b>Holly</b><span>jealousy, envy, suspicion</span></li>
-      </ul></details>
-      <details class="grp"><summary>Despondency and despair<span>8 remedies</span></summary><ul class="rem">
-        <li><b>Larch</b><span>lack of confidence</span></li>
-        <li><b>Pine</b><span>guilt, self-blame</span></li>
-        <li><b>Elm</b><span>overwhelmed by responsibility</span></li>
-        <li><b>Sweet Chestnut</b><span>extreme anguish</span></li>
-        <li><b>Star of Bethlehem</b><span>shock, grief</span></li>
-        <li><b>Willow</b><span>resentment, “poor me”</span></li>
-        <li><b>Oak</b><span>pushing on despite exhaustion</span></li>
-        <li><b>Crab Apple</b><span>self-disgust, a need to cleanse</span></li>
-      </ul></details>
-      <details class="grp"><summary>Over-care for others<span>5 remedies</span></summary><ul class="rem">
-        <li><b>Chicory</b><span>possessive, over-protective love</span></li>
-        <li><b>Vervain</b><span>over-enthusiasm, strong opinions</span></li>
-        <li><b>Vine</b><span>domineering, inflexible</span></li>
-        <li><b>Beech</b><span>intolerance, being critical</span></li>
-        <li><b>Rock Water</b><span>rigid, hard on yourself</span></li>
-      </ul></details>
-    </div>
+    <p class="hint">Tap a theme to see its leaves, then tap a leaf to reveal the remedy.</p>
+    <div class="cats">
+      <button type="button" class="cat" style="--c:#B83A2E" aria-pressed="false" aria-controls="p0">Fear</button>
+      <button type="button" class="cat" style="--c:#D9622B" aria-pressed="false" aria-controls="p1">Uncertainty</button>
+      <button type="button" class="cat" style="--c:#E5A82A" aria-pressed="false" aria-controls="p2">Not enough interest in the present</button>
+      <button type="button" class="cat" style="--c:#7F9442" aria-pressed="false" aria-controls="p3">Loneliness</button>
+      <button type="button" class="cat" style="--c:#D4757F" aria-pressed="false" aria-controls="p4">Over-sensitivity to influences</button>
+      <button type="button" class="cat" style="--c:#A9633A" aria-pressed="false" aria-controls="p5">Despondency and despair</button>
+      <button type="button" class="cat" style="--c:#8A4F7D" aria-pressed="false" aria-controls="p6">Over-care for others</button>
+      </div>
+    <div class="panels">
+      <div class="panel" id="p0" style="--c:#B83A2E" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-20) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Rock Rose</b><span>terror, panic</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(17) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Mimulus</b><span>fear of known things</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(13) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Cherry Plum</b><span>fear of losing control</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(9) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Aspen</b><span>vague, unexplained fear</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(5) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Red Chestnut</b><span>worry for loved ones</span></span></button>
+        </div></div>
+      <div class="panel" id="p1" style="--c:#D9622B" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(1) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Cerato</b><span>doubting your own judgement</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-3) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Scleranthus</b><span>indecision, swinging between choices</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-7) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Gentian</b><span>discouragement after a setback</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-11) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Gorse</b><span>hopelessness, feeling it’s no use</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-15) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Hornbeam</b><span>“Monday morning” weariness</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-19) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Wild Oat</b><span>unsure of your direction in life</span></span></button>
+        </div></div>
+      <div class="panel" id="p2" style="--c:#E5A82A" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(18) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Clematis</b><span>drifting, daydreaming</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(14) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Honeysuckle</b><span>living in the past</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(10) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Wild Rose</b><span>resignation, apathy</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(6) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Olive</b><span>complete exhaustion</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(2) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>White Chestnut</b><span>unwanted, repeating thoughts</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-2) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Mustard</b><span>deep gloom with no clear cause</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-6) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Chestnut Bud</b><span>repeating the same mistakes</span></span></button>
+        </div></div>
+      <div class="panel" id="p3" style="--c:#7F9442" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-10) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Water Violet</b><span>reserved, aloof</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-14) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Impatiens</b><span>impatience, irritability</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-18) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Heather</b><span>wrapped up in your own troubles</span></span></button>
+        </div></div>
+      <div class="panel" id="p4" style="--c:#D4757F" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(19) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Agrimony</b><span>hiding worries behind a cheerful face</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(15) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Centaury</b><span>finding it hard to say no</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(11) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Walnut</b><span>support through change</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(7) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Holly</b><span>jealousy, envy, suspicion</span></span></button>
+        </div></div>
+      <div class="panel" id="p5" style="--c:#A9633A" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(3) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Larch</b><span>lack of confidence</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-1) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Pine</b><span>guilt, self-blame</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-5) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Elm</b><span>overwhelmed by responsibility</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-9) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Sweet Chestnut</b><span>extreme anguish</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-13) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Star of Bethlehem</b><span>shock, grief</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(-17) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Willow</b><span>resentment, “poor me”</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(20) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Oak</b><span>pushing on despite exhaustion</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(16) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Crab Apple</b><span>self-disgust, a need to cleanse</span></span></button>
+        </div></div>
+      <div class="panel" id="p6" style="--c:#8A4F7D" hidden><div class="cards">
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(12) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Chicory</b><span>possessive, over-protective love</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(8) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Vervain</b><span>over-enthusiasm, strong opinions</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(4) scale(-1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Vine</b><span>domineering, inflexible</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-24 -24 48 48" aria-hidden="true"><g transform="rotate(0) scale(1 1)"><use href="#mp" x="-24" y="-24" width="48" height="48"/></g></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Beech</b><span>intolerance, being critical</span></span></button>
+        <button type="button" class="fc" aria-pressed="false"><span class="front"><svg viewBox="-20 -20 40 40" aria-hidden="true"><use href="#dr"/></svg><span class="tap">tap to reveal</span></span><span class="back"><b>Rock Water</b><span>rigid, hard on yourself</span></span></button>
+        </div></div>
+      </div>
     <p class="note"><strong>What’s in your remedy</strong><br>Thirty-seven of the 38 Bach remedies are made from wild flowers, trees and plants, whose essence, in Dr Bach’s tradition, is carried in water. The exception is Rock Water, which is made from natural spring water. Your blend is mostly water with the remedies, plus a very small amount of alcohol that acts as a preservative.</p>
   </section>
 
@@ -225,5 +265,14 @@ nav ul{flex-wrap:wrap;gap:4px 16px;font-size:.92rem}
 </div>
 <footer>© <span id="yr"></span> Autumn Mirage Bach Remedies · Singapore<br>Bach Foundation Registered Practitioner</footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+document.querySelectorAll('.cat').forEach(function(b){b.addEventListener('click',function(){
+  var was=b.getAttribute('aria-pressed')==='true';
+  document.querySelectorAll('.cat').forEach(function(x){x.setAttribute('aria-pressed','false');document.getElementById(x.getAttribute('aria-controls')).hidden=true;});
+  if(!was){b.setAttribute('aria-pressed','true');document.getElementById(b.getAttribute('aria-controls')).hidden=false;}
+});});
+document.querySelectorAll('.fc').forEach(function(c){c.addEventListener('click',function(){var o=c.classList.toggle('open');c.setAttribute('aria-pressed',o?'true':'false');});});
+</script>
+<noscript><style>.panel[hidden]{display:block}.fc .front{display:none}.fc .back{opacity:1;transform:none}</style></noscript>
 </body>
 </html>
